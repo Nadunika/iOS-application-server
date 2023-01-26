@@ -1,8 +1,8 @@
-const Recipe = require("../models/recipeModel.js");
+const Food = require("../models/foodModel.js");
 const Wishlist = require("../models/wishlistModel");
 
 //get all
-const getAllRecipe = async (req, res) => {
+const getAllFood = async (req, res) => {
   try {
     let result = await Recipe.find();
     res.send(result);
@@ -41,4 +41,4 @@ const create = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAllRecipe, getById, create };
+module.exports = { getAllFood, getById, create };

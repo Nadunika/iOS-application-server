@@ -1,7 +1,7 @@
 const Wishlist = require("../models/wishlistModel");
 const User = require("../models/userModel");
 const async = require("async");
-const Recipe = require("../models/recipeModel");
+const Food = require("../models/foodModel");
 
 const getWishlistItem = async (req, res) => {
   try {
@@ -29,7 +29,7 @@ const addToWishlist = async (req, res) => {
   try {
     let existsObj = await Wishlist.findOne({
       userId: req.body.userId,
-      recipeId: req.body.recipeId,
+      foodId: req.body.foodId,
     });
     if (existsObj) {
       existsObj.delete();

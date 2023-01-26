@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const userRoute = require("./routers/user.js");
-const recipeRoute = require("./routers/recipe.js");
+const foodRoute = require("./routers/food.js");
 const wishlistRoute = require("./routers/wishlist.js");
 
 // configuration data by environment file
@@ -15,7 +15,7 @@ const APP = express();
 APP.use(cors());
 APP.use(express.json());
 APP.use("/api/users", userRoute);
-APP.use("/api/recipes", recipeRoute);
+APP.use("/api/foods", foodRoute);
 APP.use("/api/wishlists", wishlistRoute);
 
 mongoose.set("strictQuery", false);

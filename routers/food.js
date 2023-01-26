@@ -1,10 +1,10 @@
 const express = require("express");
-const { getAllRecipe, getById, create } = require("../controllers/recipeController.js");
+const { getAllFood, getById, create } = require("../controllers/foodController.js");
 
 const router = express.Router();
 
 router.post("/", create);
-router.get("/", getAllRecipe);
+router.get("/", getAllFood);
 router.get("/:id", getById);
 // router.delete("/:id", deleteById);
 
