@@ -64,6 +64,16 @@ const getById = async (req, res) => {
   }
 };
 
+const getByName = async (req, res) => {
+  try {
+    let id = req.params.id;
+    let result = await Food.findOne({ name: name });
+    res.send(result);
+  } catch (e) {
+    res.status(500).send({ message: "failed" });
+  }
+};
+
 const create = async (req, res) => {
   try {
     let body = req.body;
@@ -84,4 +94,4 @@ const create = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAllFood, getById, create, getPopularFood, getBreakfastFood, getLunchFood, getDinnerFood};
+module.exports = { getAllFood, getById, create, getPopularFood, getBreakfastFood, getLunchFood, getDinnerFood, getByName};

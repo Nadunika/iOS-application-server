@@ -9,7 +9,7 @@ const getWishlistItem = async (req, res) => {
     let wishlistItems = await Wishlist.find({ userId: id });
     console.log(wishlistItems)
     let users = await async.map(wishlistItems, async (user) => {
-      let res1 = await Recipe.findOne({ _id: user.recipeId });
+      let res1 = await Food.findOne({ _id: user.foodId });
       
       if (res1) {
         res1 = JSON.parse(JSON.stringify(res1));
@@ -26,15 +26,19 @@ const getWishlistItem = async (req, res) => {
 };
 
 const addToWishlist = async (req, res) => {
+
   try {
     let existsObj = await Wishlist.findOne({
       userId: req.body.userId,
       foodId: req.body.foodId,
     });
+    
     if (existsObj) {
+
       existsObj.delete();
       return res.send({ message: "success", res: existsObj });
     }
+
     let response = await new Wishlist(req.body).save();
     res.send({ message: "success", res: response });
   } catch (e) {
