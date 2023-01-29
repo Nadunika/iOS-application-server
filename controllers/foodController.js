@@ -66,11 +66,11 @@ const getById = async (req, res) => {
 
 const getByName = async (req, res) => {
   try {
-    let id = req.params.id;
-    let result = await Food.findOne({ name: name });
+    let name = req.params.name;
+    let result = await Food.find({ name: name});
     res.send(result);
   } catch (e) {
-    res.status(500).send({ message: "failed" });
+    res.status(500).send({ message: "failed",e});
   }
 };
 
